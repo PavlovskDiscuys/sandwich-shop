@@ -19,21 +19,24 @@ public class AppSandwich_2 {
         double sandwichRegular = 5.45;
         double sandwichLarge = 8.95;
 
-
-//          Bad logic
-
-//        if (sandwichSize == "l"){
-//            int chosenSandwich = sandwichLarge;
-//        } else {
-//            int chosenSandwich = sandwichRegular;
-//        }
-
-
         double chosenPrice;
-        if (sandwichSize.equals("l") || sandwichSize.equals("large")) {
+        boolean isLarge = sandwichSize.equals("l") || sandwichSize.equals("large");
+        if (isLarge) {
             chosenPrice = sandwichLarge;
         } else {
             chosenPrice = sandwichRegular;
+        }
+
+        System.out.println("Would you like the sandwich loaded (Yes/no): ");
+        String loadedSandwich = input.nextLine().trim().toLowerCase();
+
+        double loadPrice = 0.0;
+        if (loadedSandwich.equals("y") || loadedSandwich.equals("yes")) {
+            if (isLarge) {
+                loadPrice = 1.75;
+            } else {
+                loadPrice = 1.00;
+            }
         }
 
         // Customer age
@@ -44,20 +47,6 @@ public class AppSandwich_2 {
         // Read age (as an int)
         int age = input.nextInt();
         System.out.println("you entered age " + age);
-
-
-//        //  Price Calculation
-        //      Bad logic
-//        if (age < 18){
-//            sandwichRegular = sandwichRegular * 0.9;
-//            sandwichLarge = sandwichLarge * 0.9;
-//        } else if (age >= 65){
-//            sandwichRegular = sandwichRegular * .8;
-//            sandwichLarge = sandwichLarge * .8;
-//        } else {
-//            sandwichRegular = sandwichRegular;
-//            sandwichLarge = sandwichLarge;
-//        }
 
         double finalPrice = chosenPrice;
         if (age <= 17) {
